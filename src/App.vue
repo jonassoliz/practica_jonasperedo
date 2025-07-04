@@ -5,6 +5,7 @@ import FormularioUsuario from './components/FormularioUsuario.vue';
 import ListaUsuarios from './components/ListaUsuarios.vue';
 
 const usuarios = ref([]);
+
 function eliminarUsuario(index) {
   usuarios.value.splice(index, 1);
 }
@@ -15,18 +16,21 @@ const agregarUsuario = (usuario) => {
 </script>
 
 <template>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="sidebar-logo">Mi Empresa</div>
-      <ul class="sidebar-links">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Clientes</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </aside>
+  <!-- SIDEBAR MODERNO -->
+  <div class="sidebar">
+    <div class="sidebar-logo">Mi App</div>
+    <ul class="sidebar-links">
+      <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+      <li><a href="#"><i class="fas fa-user-plus"></i> Registro</a></li>
+      <li><a href="#"><i class="fas fa-users"></i> Usuarios</a></li>
+      <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+    </ul>
   </div>
-  <h1>Registro de Usuarios</h1>
-  <FormularioUsuario @nuevoUsuario="agregarUsuario" />
-  <ListaUsuarios :usuarios="usuarios" @eliminar="eliminarUsuario" />
-  
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="contenedor">
+    <h1>Registro de Usuarios</h1>
+    <FormularioUsuario @nuevoUsuario="agregarUsuario" />
+    <ListaUsuarios :usuarios="usuarios" @eliminar="eliminarUsuario" />
+  </div>
 </template>

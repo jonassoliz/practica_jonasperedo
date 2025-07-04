@@ -1,38 +1,108 @@
-/* src/style.css */
+/* Fuente moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #00b4db, #0083b0);
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
 }
 
 #app {
-  background-color: rgb(224, 166, 166);
-  padding: 40px;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  max-width: 1050px;
   width: 100%;
-  animation: fadeIn 0.5s ease-out;
-  position: relative;
-  left: 180px;
+  display: flex;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+/* SIDEBAR MODERNO */
+.sidebar {
+  width: 240px;
+  background: linear-gradient(to bottom, #1976d2, #1565c0);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.sidebar-logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar-links li {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.sidebar-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-links li a:hover,
+.sidebar-links li a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(6px);
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+  margin-left: 240px;
+  background: transparent;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 2.5rem 2rem;
+  width: calc(100% - 240px);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* TÍTULOS */
 h1 {
   text-align: center;
   color: #007aa7;
   margin-bottom: 30px;
   font-size: 28px;
   font-weight: bold;
+}
+
+/* FORMULARIO COMO TARJETA */
+.formulario-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  width: 100%;
 }
 
 form {
@@ -50,6 +120,7 @@ label {
   display: block;
 }
 
+/* CAMPOS DE ENTRADA */
 input[type="text"],
 input[type="email"] {
   padding: 12px 14px;
@@ -67,8 +138,10 @@ input:focus {
   box-shadow: 0 0 4px #00b4db;
   outline: none;
   background-color: white;
+  transform: scale(1.02);
 }
 
+/* BOTÓN DE GUARDAR */
 button[type="submit"] {
   padding: 14px 0;
   border: none;
@@ -80,12 +153,17 @@ button[type="submit"] {
   cursor: pointer;
   transition: background 0.3s ease;
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 button[type="submit"]:hover {
   background: linear-gradient(90deg, #0083b0, #00b4db);
 }
 
+/* MENSAJE DE ERROR */
 .error {
   background-color: #ffeaea;
   border: 1.5px solid #e74c3c;
@@ -96,25 +174,7 @@ button[type="submit"]:hover {
   text-align: center;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 24px;
-}
-
-li {
-  background-color: #f0faff;
-  padding: 14px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-  font-size: 16px;
-  color: #333;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+/* TABLA DE USUARIOS */
 .tabla-usuarios-wrapper {
   width: 100%;
   overflow-x: auto;
@@ -126,13 +186,16 @@ li {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  border-collapse: collapse;
 }
 
 .tabla-usuarios th, .tabla-usuarios td {
   padding: 14px 18px;
   text-align: center;
   border-bottom: 1.5px solid #e0e0e0;
+  vertical-align: middle;
 }
+
 
 .tabla-usuarios th {
   background: #00b4db;
@@ -150,136 +213,51 @@ li {
 }
 
 .tabla-usuarios td:nth-child(1) {
-  background-color: #e3f6fc; /* Nombre */
+  background-color: #e3f6fc;
 }
 
 .tabla-usuarios td:nth-child(2) {
-  background-color: #f9fbe7; /* Correo */
+  background-color: #f9fbe7;
 }
 
 .tabla-usuarios td:nth-child(3) {
-  background-color: #fff3e0; /* Teléfono */
+  background-color: #fff3e0;
 }
 
 .tabla-usuarios td:nth-child(4) {
-  background-color: #ffeaea; /* Acción */
-}
-
-.navbar {
-  width: 100%;
-  background: #263238;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.7rem 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  margin-bottom: 2rem;
-}
-
-.navbar-logo {
-  font-size: 1.3rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.navbar-links li a:hover {
-  color: #4caf50;
-}
-
-
-.sidebar {
-  width: 20%;
-  background: linear-gradient(135deg, #e3f0ff 0%, #f8fafc 100%);
-  color: #263238;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 2rem 1rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
-  border-right: 1.5px solid #e0e7ef;
-}
-
-.sidebar-logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  letter-spacing: 1px;
-  width: 100%;
+  background-color: #ffeaea;
   text-align: center;
-  color: #1976d2;
+  vertical-align: middle;
+  padding: 14px 18px; /* Igual que los otros */
 }
 
-.sidebar-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
+
+/* BOTÓN DE ELIMINAR */
+.tabla-usuarios button {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.3s ease;
 }
 
-.sidebar-links li {
-  width: 100%;
-  margin-bottom: 1.2rem;
+.tabla-usuarios button:hover {
+  background: #c0392b;
 }
 
-.sidebar-links li a {
-  color: #263238;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.7rem 1rem;
-  display: block;
-  border-radius: 8px;
-  background: transparent;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+
+
+/* HOVER EN FILAS DE TABLA */
+.tabla-usuarios tr:hover {
+  background-color: #e0f7fa;
+  transition: background-color 0.3s ease;
 }
 
-.sidebar-links li a:hover,
-.sidebar-links li a.active {
-  background: #e3f2fd;
-  color: #1976d2;
-  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
-}
-
-.contenedor {
-  margin-left: 20%;
-  background: transparent;
-  min-height: 100vh;
-  box-sizing: border-box;
-  padding: 2.5rem 2rem 2rem 2rem;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-form input,
-form button,
-.tabla-clientes {
-  width: 100%;
-  box-sizing: border-box;
-}
-
+/* ENTRADA DE DATOS */
 .entrada-datos {
   width: 100%;
 }
@@ -289,20 +267,24 @@ form button,
   box-sizing: border-box;
 }
 
-/* Media queries para responsive */
+/* MEDIA QUERIES */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
     position: relative;
     height: auto;
   }
-  
+
   .contenedor {
     margin-left: 0;
     width: 100%;
   }
-  
-  .layout {
+
+  #app {
     flex-direction: column;
+  }
+
+  .formulario-card {
+    padding: 1rem;
   }
 }

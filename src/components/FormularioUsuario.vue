@@ -1,3 +1,4 @@
+<!-- src/components/Formulario.vue -->
 <script setup>
 import { ref } from 'vue';
 import EntradaDatos from './EntradaDatos.vue';
@@ -8,7 +9,6 @@ const telefono = ref('');
 const error = ref('');
 const emit = defineEmits(['nuevoUsuario']);
 
-// Validaciones
 const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const regexTelefono = /^[0-9]{8}$/;
 
@@ -28,17 +28,14 @@ const enviarFormulario = () => {
     return;
   }
 
-  // Emitir evento con los datos
   emit('nuevoUsuario', {
     nombre: nombre.value,
     correo: correo.value,
     telefono: telefono.value,
   });
 
-  // Mostrar mensaje de éxito
   alert('Registro exitoso');
 
-  // Limpiar campos
   nombre.value = '';
   correo.value = '';
   telefono.value = '';
@@ -46,14 +43,14 @@ const enviarFormulario = () => {
 };
 </script>
 
-
-
 <template>
-  <form @submit.prevent="enviarFormulario">
+  <form @submit.prevent="enviarFormulario" class="formulario-card">
     <EntradaDatos label="Nombre" v-model="nombre" type="text" placeholder="Ingrese su nombre" />
-    <EntradaDatos label="Correo" v-model="correo" type="email" placeholder="Ingrese su correo electro" />
-    <EntradaDatos label="Teléfono" v-model="telefono" type="text" placeholder="Ingrese su numero telefonico" />
+    <EntradaDatos label="Correo" v-model="correo" type="email" placeholder="Ingrese su correo electrónico" />
+    <EntradaDatos label="Teléfono" v-model="telefono" type="text" placeholder="Ingrese su número telefónico" />
     <p v-if="error" class="error">{{ error }}</p>
-    <button type="submit">Guardar</button>
+    <button type="submit">
+      <i class="fas fa-save"></i> Guardar
+    </button>
   </form>
 </template>
